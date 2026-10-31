@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A3667">
+<meta property="og:title" content="Morochas Energy Group, C.A.">
+<meta property="og:description" content="Obras eléctricas y civiles, transporte, servicios ambientales, transformadores y suministro industrial en Maracaibo, Zulia.">
+<meta property="og:image" content="/img/linero.jpg">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<title>Morochas Energy Group</title>
+<meta name="description" content="Obras eléctricas y civiles, transporte, servicios ambientales, transformadores y suministro industrial en Maracaibo, Zulia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: "morochas" = gemelas. Composición en pares: dos columnas que se responden, dos rayos en la marca, campos de color azul marino y naranja alternados. */
+:root{
+  --navy:#0A3667; --navy-2:#12457F; --orange:#F6960E; --orange-2:#FFB04A; --steel:#AEB5B8;
+  --bg:#F4F6F8; --surface:#E7ECF2; --fg:#0A3667; --muted:#5B6670;
+  --on-navy:#F4F6F8; --on-orange:#0A3667; --card:#FFFFFF;
+  --display:"Montserrat","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-io:cubic-bezier(.77,0,.175,1);
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutr:max(16px,env(safe-area-inset-right,0px));
+  --wrap:1240px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#051A35;--surface:#0B2A52;--fg:#EEF2F8;--muted:#AEB9C6;--navy:#0A3667;--navy-2:#134A88;--card:#0D2C55;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#051A35;--surface:#0B2A52;--fg:#EEF2F8;--muted:#AEB9C6;--navy:#0A3667;--navy-2:#134A88;--card:#0D2C55;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,3.4vw,44px);font-weight:800}
+h3{font-size:clamp(19px,1.6vw,22px);font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.band{padding-block:clamp(72px,9vw,128px)}
+.lead{font-size:clamp(16px,1.25vw,18px);max-width:60ch}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+
+/* ---------- Buttons ---------- */
+.btn{--bg-b:var(--orange);--fg-b:var(--on-orange);--depth:#B86A00;--rx:0deg;--ry:0deg;--lift:0px;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border:0;border-radius:12px;background:var(--bg-b);color:var(--fg-b);font:700 15px/1 var(--body);text-decoration:none;cursor:pointer;isolation:isolate;transform:perspective(600px) translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;box-shadow:0 6px 0 var(--depth),0 14px 22px -10px rgba(0,0,0,.45);transition:transform 220ms var(--ease-out),box-shadow 220ms var(--ease-out),background-color 200ms ease,color 200ms ease;will-change:transform}
+.btn .shine{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:-1}
+.btn .shine::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);opacity:0}
+.btn .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),transparent 55%);opacity:0;transition:opacity 220ms ease}
+.btn .arr{display:inline-block;transition:transform 220ms var(--ease-out)}
+.btn:active{--lift:4px!important;box-shadow:0 2px 0 var(--depth),0 6px 12px -8px rgba(0,0,0,.45);transition-duration:90ms}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{--lift:-3px;box-shadow:0 9px 0 var(--depth),0 22px 30px -12px rgba(0,0,0,.5)}
+  .btn:hover .glare{opacity:1}
+  .btn:hover .shine::before{animation:sweep 800ms var(--ease-out)}
+  .btn:hover .arr{transform:translateX(5px)}
+}
+@keyframes sweep{from{left:-60%;opacity:1}to{left:120%;opacity:1}}
+.btn.ghost{--bg-b:rgba(255,255,255,.06);--fg-b:var(--on-navy);--depth:rgba(255,255,255,.35);box-shadow:inset 0 0 0 2px rgba(255,255,255,.7),0 6px 0 var(--depth)}
+@media (hover:hover) and (pointer:fine){.btn.ghost:hover{--bg-b:#F4F6F8;--fg-b:var(--navy);box-shadow:inset 0 0 0 2px #F4F6F8,0 9px 0 var(--depth),0 22px 30px -12px rgba(0,0,0,.5)}}
+.btn.dark{--bg-b:var(--navy);--fg-b:var(--on-navy);--depth:#061F3D}
+.btn.live::before{content:"";position:absolute;inset:-4px;border-radius:16px;z-index:-2;animation:ring 2.4s var(--ease-out) infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(246,150,14,.5)}70%{box-shadow:0 0 0 16px rgba(246,150,14,0)}100%{box-shadow:0 0 0 0 rgba(246,150,14,0)}}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:transparent;color:var(--on-navy);transition:background-color 300ms ease,box-shadow 300ms ease}
+.nav.solid{background:var(--navy);box-shadow:0 10px 30px -18px rgba(0,0,0,.5)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:flex;align-items:center;text-decoration:none;background:#F6F7F7;border-radius:14px;padding:6px 12px;transition:transform 160ms var(--ease-out)}
+.brand img{height:44px;width:auto;display:block}
+.brand:active{transform:scale(.97)}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{font-family:var(--display);font-weight:900;font-size:24px;letter-spacing:.02em;line-height:.9;text-transform:uppercase}
+.brand small{display:block;font:600 11px/1.2 var(--body);letter-spacing:.14em;color:var(--orange-2);text-transform:uppercase}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.nav ul a{position:relative;text-decoration:none;font-weight:500;font-size:15px;opacity:.9}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 220ms var(--ease-out)}
+@media (hover:hover){.nav ul a:hover::after{transform:scaleX(1)}}
+.nav .btn{min-height:42px;padding:0 18px;font-size:14px;box-shadow:0 4px 0 var(--depth)}
+@media (max-width:900px){.nav ul{display:none}}
+@media (max-width:420px){.brand small{display:none}.nav .btn{padding:11px 14px}}
+
+/* ---------- Hero (plantilla: fondo a sangre, texto a la izquierda, curva y tarjetas superpuestas) ---------- */
+.hero{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden;margin-top:-72px;min-height:min(860px,96vh)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg{overflow:hidden}
+.hero-bg .bgph{width:100%;height:100%;object-fit:cover;display:block;filter:blur(6px) saturate(.8);transform:scale(1.08);animation:kb 26s ease-in-out infinite alternate}
+.hero-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;transition:transform 600ms var(--ease-out)}
+.hero-net{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+.hero-glow{position:absolute;z-index:1;width:520px;height:520px;left:0;top:0;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(246,150,14,.28),rgba(246,150,14,0) 65%);pointer-events:none;opacity:0;transition:opacity 400ms ease;transform:translate(var(--mx,50vw),var(--my,40vh))}
+.hero:hover .hero-glow{opacity:1}
+.hero-bg .bgph{transition:translate 900ms var(--ease-out)}
+.hero-ph{margin:0;position:relative;justify-self:end;width:min(100%,520px);perspective:900px;animation:phin 1100ms 300ms var(--ease-out) both}
+.hero-ph .tilt{transform:rotate(2deg) rotateX(var(--trx,0deg)) rotateY(var(--try,0deg));transform-style:preserve-3d;transition:transform 500ms var(--ease-out)}
+.hero-ph img{display:block;width:100%;height:auto;aspect-ratio:682/463;object-fit:cover;border-radius:24px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);border:6px solid #F4F6F8}
+.hero-ph figcaption{position:absolute;left:-24px;bottom:-26px;transform:translateZ(40px);background:var(--orange);color:var(--on-orange);border-radius:16px;padding:14px 18px;display:grid;transform:rotate(-2deg);animation:float 5s ease-in-out infinite}
+.hero-ph figcaption b{font:700 16px/1.2 var(--display)}
+.hero-ph figcaption span{font-size:14px;font-weight:600}
+@keyframes phin{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateZ(40px) rotate(-2deg) translateY(0)}50%{transform:translateZ(40px) rotate(-2deg) translateY(-8px)}}
+@keyframes kb{to{transform:scale(1.18) translateX(-2%)}}
+.hero-scrim{position:absolute;inset:0;background:rgba(10,54,103,.82)}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(140px,14vw,190px) clamp(220px,19vw,270px)}
+@media (max-width:900px){.hero-in{grid-template-columns:1fr}.hero-ph{justify-self:center;max-width:440px;margin-top:24px}}
+.hero h1{font-size:clamp(38px,4.6vw,60px);font-weight:800;line-height:1.08;max-width:13ch}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:block;animation:rise 900ms var(--ease-out) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:110ms;color:var(--orange)}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero .lead{margin-top:32px;color:#DCE4F0;max-width:52ch;animation:fadeup 800ms 320ms var(--ease-out) both}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:fadeup 800ms 420ms var(--ease-out) both}
+.curve{z-index:2;position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(60px,9vw,120px);display:block}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.flow{stroke-dasharray:6 22;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-56}}
+.spark{animation:spark 2.2s ease-in-out infinite}
+@keyframes spark{0%,100%{opacity:.25}50%{opacity:1}}
+.sun{animation:sunr 9s ease-in-out infinite alternate}
+@keyframes sunr{to{transform:translateY(-12px)}}
+.water line{animation:wave 4s ease-in-out infinite alternate}
+@keyframes wave{to{transform:translateX(18px)}}
+.pump{animation:nod 3.2s ease-in-out infinite}
+@keyframes nod{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@media (max-width:760px){.hero-scrim{background:rgba(10,54,103,.78)}.hero-in{padding-block:130px 170px}}
+
+/* ---------- Tarjetas superpuestas ---------- */
+.pillars{position:relative;z-index:2;margin-top:clamp(-170px,-12vw,-110px)}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pcard{background:var(--card);color:var(--fg);border-radius:22px;padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;box-shadow:0 30px 60px -30px rgba(10,54,103,.45);animation:cardup 800ms calc(500ms + var(--d)) var(--ease-out) backwards;transition:transform 300ms var(--ease-out)}
+@keyframes cardup{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@media (hover:hover){.pcard:hover{transform:translateY(-8px)}.pcard:hover .ico{transform:rotate(-8deg) scale(1.08)}}
+.ico{width:52px;height:52px;color:var(--orange);transition:transform 300ms var(--ease-out)}
+.pcard h3{font-size:22px}
+.pcard p{color:var(--muted)}
+.pcard .btn,.fitem .btn{margin-top:auto}
+.btn.sm{min-height:44px;padding:0 18px;font-size:14px}
+.btn.outline{--bg-b:var(--card);--fg-b:var(--fg);--depth:var(--orange);box-shadow:inset 0 0 0 2px var(--orange),0 5px 0 var(--depth)}
+@media (hover:hover) and (pointer:fine){.btn.outline:hover{--bg-b:var(--orange);--fg-b:var(--on-orange);--depth:#B86A00;box-shadow:0 8px 0 var(--depth),0 20px 28px -12px rgba(0,0,0,.4)}}
+@media (max-width:900px){.pgrid{grid-template-columns:1fr}}
+
+/* ---------- Enfoque ---------- */
+.focus-t{text-align:center}
+.fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.5vw,32px);margin-top:56px}
+.fitem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:12px 8px}
+.fitem h3{font-size:20px}
+.fitem p{color:var(--muted);font-size:16px;max-width:28ch}
+@media (hover:hover){.fitem:hover .ico{transform:translateY(-6px)}}
+@media (max-width:900px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.fgrid{grid-template-columns:1fr}}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa-float{position:fixed;z-index:70;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform 160ms var(--ease-out);animation:wapop 600ms 1200ms var(--ease-out) both}
+.wa-float svg{width:32px;height:32px}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;animation:waring 2.4s var(--ease-out) infinite}
+.wa-float:active{transform:scale(.94)}
+@media (hover:hover){.wa-float:hover{transform:scale(1.08)}}
+@keyframes wapop{from{opacity:0;transform:scale(.6) translateY(20px)}to{opacity:1;transform:none}}
+@keyframes waring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ---------- Marquee ---------- */
+.ticker{background:var(--orange);color:var(--on-orange);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:40px;padding-block:15px;animation:marq 36s linear infinite}
+.ticker span{font:700 17px/1 var(--display);display:inline-flex;align-items:center;gap:48px}
+.ticker span::after{content:"";width:12px;height:12px;background:var(--navy);transform:rotate(45deg)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- Figures ---------- */
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+.fig b{display:block;font:800 clamp(38px,4.2vw,54px)/1 var(--display);letter-spacing:-.02em;color:var(--orange);font-variant-numeric:tabular-nums}
+.fig span{display:block;margin-top:12px;font-weight:600;max-width:22ch}
+@media (max-width:820px){.figs{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Capacidades (tabs) ---------- */
+.cap-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.tab{position:relative;border:0;border-radius:999px;padding:14px 22px;background:var(--surface);color:var(--fg);font:600 15px/1 var(--body);cursor:pointer;transition:transform 160ms var(--ease-out),background-color 200ms ease,color 200ms ease}
+.tab:active{transform:scale(.97)}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--on-navy)}
+:root[data-theme="dark"] .tab[aria-selected="true"]{background:var(--orange);color:var(--on-orange)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tab[aria-selected="true"]{background:var(--orange);color:var(--on-orange)}}
+@media (hover:hover){.tab:not([aria-selected="true"]):hover{background:color-mix(in srgb,var(--orange) 22%,var(--surface))}}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.panel[hidden]{display:none!important}
+.panel.in .pv{animation:pv 600ms var(--ease-out) both}
+.panel.in li{animation:fadeup 500ms var(--ease-out) both}
+@keyframes pv{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.pv{background:var(--navy);border-radius:28px;aspect-ratio:4/3.2;overflow:hidden;max-width:100%}
+.pv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 900ms var(--ease-out)}
+@media (hover:hover){.panel:hover .pv img{transform:scale(1.06)}}
+.svc{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.svc li{display:grid;grid-template-columns:28px 1fr;gap:14px}
+.svc li.thumbli{grid-template-columns:72px 1fr}
+.svc li.thumbli::before{display:none}
+.svc li.thumbli img{width:72px;height:72px;object-fit:cover;border-radius:14px;background:#fff}
+.svc li::before{content:"";width:12px;height:12px;margin-top:9px;background:var(--orange);transform:rotate(45deg)}
+.svc b{display:block;font-size:17px}
+.svc p{color:var(--muted)}
+.brands{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.brands span{padding:8px 14px;border-radius:999px;background:var(--surface);font-weight:600;font-size:14px}
+@media (max-width:860px){.cap-head,.panel{grid-template-columns:1fr}}
+
+/* ---------- Transformadores ---------- */
+.tx{background:var(--navy);color:var(--on-navy)}
+.tx .head{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end}
+.tx .lead{color:#C9D4E5}
+.tool{margin-top:56px;display:grid;grid-template-columns:340px 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.ctrl{position:sticky;top:96px;display:grid;gap:28px;background:var(--navy-2);border-radius:24px;padding:28px}
+.ctrl label,.ctrl legend{font-weight:700;font-size:15px;display:block;margin-bottom:12px}
+.ctrl fieldset{border:0;margin:0;padding:0}
+.seg{display:flex;background:var(--navy);border-radius:999px;padding:4px;position:relative}
+.seg button{flex:1;position:relative;z-index:1;border:0;background:transparent;color:var(--on-navy);font:600 14px/1 var(--body);padding:12px 6px;border-radius:999px;cursor:pointer;transition:color 200ms ease}
+.seg button[aria-pressed="true"]{color:var(--on-orange)}
+.seg .thumb{position:absolute;top:4px;bottom:4px;left:4px;border-radius:999px;background:var(--orange);transition:transform 320ms var(--ease-io),width 320ms var(--ease-io)}
+.kva-out{font:800 40px/1 var(--display);color:var(--orange);font-variant-numeric:tabular-nums}
+.kva-out small{font-size:18px;color:var(--on-navy);margin-left:6px}
+input[type=range]{width:100%;accent-color:var(--orange);height:28px}
+.ctrl .note{font-size:14px;color:#A9B8CF}
+.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--bg);color:var(--fg);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:transform 260ms var(--ease-out),opacity 260ms var(--ease-out)}
+.card.out{display:none}
+.card.enter{animation:pv 420ms var(--ease-out) both}
+.card .cimg{margin:-26px -26px 4px;aspect-ratio:16/10;background:#fff;border-radius:22px 22px 0 0;overflow:hidden}
+.card .cimg img{width:100%;height:100%;object-fit:contain;padding:12px;transition:transform 600ms var(--ease-out)}
+@media (hover:hover){.card:hover .cimg img{transform:scale(1.07)}}
+.card .ph{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card h3{font-size:19px}
+.chip{flex:none;padding:6px 12px;border-radius:999px;background:var(--orange);color:var(--on-orange);font-weight:700;font-size:13px}
+.card p{color:var(--muted);font-size:15px}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.card dt{font-weight:700}
+.card dd{margin:0;font-variant-numeric:tabular-nums}
+.card .q{margin-top:auto;align-self:flex-start;min-height:44px;padding:0 18px;font-size:14px}
+.empty{grid-column:1/-1;padding:32px;border-radius:22px;background:var(--navy-2)}
+@media (max-width:980px){.tool{grid-template-columns:1fr}.ctrl{position:static}}
+@media (max-width:640px){.results{grid-template-columns:1fr}.tx .head{grid-template-columns:1fr}}
+
+/* ---------- Protecciones ---------- */
+.prot{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.diag{position:relative;background:var(--surface);border-radius:28px;aspect-ratio:1/1;max-width:100%}
+.diag svg{width:100%;height:100%;display:block}
+.hot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:0;background:var(--orange);color:var(--on-orange);font:700 16px/1 var(--display);cursor:pointer;transition:transform 160ms var(--ease-out)}
+.hot::before{content:"";position:absolute;inset:-8px;border-radius:50%;animation:ring 2s var(--ease-out) infinite}
+.hot:active{transform:scale(.94)}
+.hot[aria-pressed="true"]{background:var(--navy);color:var(--on-navy)}
+.parts{display:grid;gap:14px}
+.part{border-radius:22px;padding:24px 26px;background:var(--surface);cursor:pointer;transition:background-color 220ms ease,transform 160ms var(--ease-out);border:0;text-align:left;color:inherit;font:inherit;width:100%}
+.part:active{transform:scale(.99)}
+.part{display:grid;grid-template-columns:84px 1fr;column-gap:20px;align-items:start}
+.part .pimg{grid-row:span 2;width:84px;height:84px;object-fit:cover;border-radius:16px;background:#fff}
+.part h3{font-size:20px}
+.part p{margin-top:10px;color:var(--muted)}
+.part[aria-pressed="true"]{background:var(--navy);color:var(--on-navy)}
+.part[aria-pressed="true"] p{color:#C9D4E5}
+@media (max-width:860px){.prot{grid-template-columns:1fr}}
+
+/* ---------- Equipos ---------- */
+.eq{background:var(--orange);color:var(--on-orange)}
+.eq-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;margin-top:56px}
+.eq-item{background:var(--navy);color:var(--on-navy);border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px;transition:transform 300ms var(--ease-out)}
+.eq-item:first-child{grid-row:span 2}
+.eq-item h3{font-size:clamp(20px,1.8vw,24px)}
+.eq-item p{color:#C9D4E5}
+.eq-item dl{margin:0;display:grid;gap:10px;font-size:15px}
+.eq-item dt{font-weight:700;color:var(--orange-2)}
+.eq-item dd{margin:0}
+.eq-item .art{border-radius:18px;overflow:hidden;background:var(--navy-2);aspect-ratio:16/9;max-width:100%}
+.eq-item .art{background:#fff}
+.eq-item .art img{width:100%;height:100%;object-fit:contain;display:block;transition:transform 700ms var(--ease-out)}
+@media (hover:hover){.eq-item:hover .art img{transform:scale(1.06)}}
+@media (hover:hover){.eq-item:hover{transform:translateY(-6px)}}
+@media (max-width:860px){.eq-grid{grid-template-columns:1fr}.eq-item:first-child{grid-row:auto}}
+
+/* ---------- Suministros ---------- */
+.sup{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px)}
+.sup-list{display:grid;gap:4px;margin-top:36px}
+.sup-row img{width:88px;height:66px;object-fit:cover;border-radius:12px;background:#fff;transition:transform 400ms var(--ease-out)}
+@media (hover:hover){.sup-row:hover img{transform:scale(1.1) rotate(-3deg)}}
+.sup-row{display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;padding:20px 0;background:linear-gradient(var(--orange),var(--orange)) left bottom/0% 3px no-repeat;transition:background-size 500ms var(--ease-out)}
+@media (hover:hover){.sup-row:hover{background-size:100% 3px}}
+.sup-row b{font:700 clamp(17px,1.5vw,20px)/1.2 var(--display)}
+.sup-row span{color:var(--muted);font-size:15px;text-align:right}
+@media (max-width:560px){.sup-row{grid-template-columns:72px 1fr}.sup-row img{width:72px;height:56px}.sup-row span{grid-column:2;text-align:left}}
+.mat{background:var(--surface);border-radius:28px;padding:clamp(24px,3vw,40px)}
+.hw{overflow:hidden;margin:-8px -8px 24px;border-radius:18px}
+.hwt{display:flex;gap:10px;width:max-content;animation:marq 40s linear infinite}
+.hwt img{width:110px;height:110px;object-fit:cover;border-radius:14px;background:#fff;flex:none}
+.mat ul{columns:2;column-gap:28px;padding:0;margin:20px 0 0;list-style:none;font-size:15px}
+.mat li{break-inside:avoid;padding:7px 0 7px 22px;position:relative}
+.mat li::before{content:"";position:absolute;left:0;top:15px;width:8px;height:8px;background:var(--orange);transform:rotate(45deg)}
+.fab{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:20px}
+.fab div{background:var(--bg);border-radius:18px;padding:18px}
+.fab img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#fff}
+.fab b{display:block;font:700 16px/1.2 var(--display)}
+.fab span{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:860px){.sup{grid-template-columns:1fr}.fab{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.mat ul{columns:1}}
+
+/* ---------- Historia ---------- */
+.hist{background:var(--navy);color:var(--on-navy)}
+.hist-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,5vw,80px);align-items:start}
+.hist .lead{color:#C9D4E5;margin-top:28px}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.tl li{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:baseline;padding:24px;border-radius:22px;background:var(--navy-2)}
+.tl b{font:800 34px/1 var(--display);color:var(--orange);font-variant-numeric:tabular-nums}
+.tl p{color:#DCE4F0}
+@media (max-width:860px){.hist-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.tl li{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- Contacto ---------- */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.form{display:grid;gap:16px;background:var(--surface);border-radius:28px;padding:clamp(22px,3vw,36px)}
+.form label{font-weight:700;font-size:15px;display:grid;gap:8px}
+.form input,.form select,.form textarea{font:500 16px/1.4 var(--body);padding:14px 16px;border-radius:14px;border:2px solid transparent;background:var(--bg);color:var(--fg);transition:border-color 200ms ease}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--orange)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.out{display:grid;gap:12px;background:var(--navy);color:var(--on-navy);border-radius:20px;padding:20px}
+.out pre{margin:0;white-space:pre-wrap;font:500 15px/1.5 var(--body)}
+.addr{display:grid;gap:22px;margin-top:36px}
+.addr div b{display:block;font-weight:700}
+.addr div span{color:var(--muted)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:480px){.form .two{grid-template-columns:1fr}}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy);color:var(--on-navy);overflow:hidden}
+footer .wrap{padding-block:72px 32px}
+.big{font:800 clamp(34px,6vw,84px)/1.02 var(--display);letter-spacing:-.03em}
+.big span{color:var(--orange)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:40px;font-size:14px;color:#A9B8CF}
+
+/* ---------- Reveal ---------- */
+.js .rv{opacity:0;transform:translateY(26px)}
+.js .rv.on{opacity:1;transform:none;transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out);transition-delay:var(--d,0ms)}
+
+/* tilt responsiveness after reveal */
+.js .eq-item.rv.on{transition:opacity 700ms var(--ease-out),transform 300ms var(--ease-out);transition-delay:0ms}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+  .ticker .track{animation:none}
+}
+</style>
+</head>
+<body>
+
+
+<a class="wa-float" href="https://wa.me/584221801786?text=Hola%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n%20a%20Morochas%20Energy%20Group." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al +58 422 180 1786">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Morochas Energy Group, inicio"><img src="img/logo-h.png" alt="Morochas Energy Group, C.A." width="446" height="160"></a>
+    <ul>
+      <li><a href="#capacidades">Capacidades</a></li>
+      <li><a href="#transformadores">Transformadores</a></li>
+      <li><a href="#suministros">Suministros</a></li>
+      <li><a href="#historia">Historia</a></li>
+    </ul>
+    <a class="btn" href="https://wa.me/584221801786" target="_blank" rel="noopener">WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true"><img class="bgph" src="img/planta.jpg" alt=""></div>
+  <svg class="hero-lines" viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke-width="3">
+      <path d="M-20 600 Q520 420 1460 180" stroke="#F4F6F8" opacity=".25"/><path class="flow" d="M-20 600 Q520 420 1460 180" stroke="#FFB04A"/>
+      <path d="M-20 680 Q600 520 1460 300" stroke="#F4F6F8" opacity=".2"/><path class="flow" d="M-20 680 Q600 520 1460 300" stroke="#FFB04A" style="animation-delay:-.8s"/>
+    </g>
+  </svg>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <canvas class="hero-net" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+   <div>
+    <h1><span class="ln"><span>Energía, obra</span></span><span class="ln"><span>y suministro</span></span></h1>
+    <p class="lead">Obras eléctricas y civiles, transporte, servicios ambientales y suministro industrial para el sector petrolero y la construcción en el Zulia. Un solo contratista, de la ingeniería a la puesta en marcha.</p>
+    <div class="ctas">
+      <a class="btn live" href="https://wa.me/584221801786?text=Hola%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n%20a%20Morochas%20Energy%20Group." target="_blank" rel="noopener">Cotizar por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="#capacidades">Ver servicios</a>
+    </div>
+   </div>
+   <figure class="hero-ph"><div class="tilt"><img src="img/linero.jpg" alt="Liniero con equipo de seguridad trabajando en una torre de alta tensión" width="682" height="463"><figcaption><b>Líneas de alta tensión</b><span>Tendido, mantenimiento y protección</span></figcaption></div></figure>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120V60Q720 -40 1440 60V120z" fill="var(--bg)"/></svg>
+</header>
+
+<section class="pillars" aria-label="Servicios principales">
+  <div class="wrap pgrid">
+    <article class="pcard" style="--d:0ms">
+      <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M27 4 11 27h11l-3 17 18-25H26z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+      <h3>Obras eléctricas</h3>
+      <p>Líneas de alta tensión, plantas eléctricas, generadores, aterramiento, PLC e instrumentación.</p>
+      <button class="btn dark sm" type="button" data-tab="tb-ele">Ver más <span class="arr" aria-hidden="true">→</span></button>
+    </article>
+    <article class="pcard" style="--d:90ms">
+      <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M4 40h40M8 40V26l10-6v20M18 40V14l12-8v34M30 40V20l10 6v14"/></g></svg>
+      <h3>Obras civiles</h3>
+      <p>Movimientos de tierra, vialidad, asfaltado, muelles, urbanismo, zanjas y canales.</p>
+      <button class="btn dark sm" type="button" data-tab="tb-civ">Ver más <span class="arr" aria-hidden="true">→</span></button>
+    </article>
+    <article class="pcard" style="--d:180ms">
+      <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><rect x="10" y="14" width="28" height="26" rx="3"/><path d="M16 14V8h16v6M4 22h6M4 32h6M38 22h6M38 32h6M18 22v10M24 22v10M30 22v10"/></g></svg>
+      <h3>Transformadores</h3>
+      <p>Monofásicos y trifásicos de 15 kVA a 60 MVA, en aceite, secos, pedestal y sumergibles.</p>
+      <a class="btn dark sm" href="#transformadores">Ver catálogo <span class="arr" aria-hidden="true">→</span></a>
+    </article>
+  </div>
+</section>
+
+<section class="focus band" aria-labelledby="t-focus">
+  <div class="wrap">
+    <h2 id="t-focus" class="rv focus-t">Más líneas de servicio</h2>
+    <div class="fgrid">
+      <div class="fitem rv" style="--d:0ms"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M3 14h26v20H3zM29 22h9l7 7v5H29z"/><circle cx="12" cy="36" r="4"/><circle cx="36" cy="36" r="4"/></g></svg><h3>Transporte</h3><p>Materiales de construcción, personas, equipos y carga inflamable, por tierra y aire.</p><button class="btn outline sm" type="button" data-tab="tb-tra">Ver más</button></div>
+      <div class="fitem rv" style="--d:80ms"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M24 4c10 10 14 17 14 24a14 14 0 0 1-28 0c0-7 4-14 14-24z"/><path d="M4 44q6-4 12 0t12 0 16 0"/></g></svg><h3>Ambiente</h3><p>Gabarras, desechos peligrosos, limpieza de orillas del lago y de fosas.</p><button class="btn outline sm" type="button" data-tab="tb-amb">Ver más</button></div>
+      <div class="fitem rv" style="--d:160ms"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="24" cy="24" r="8"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M10 10l5 5M33 33l5 5M38 10l-5 5M15 33l-5 5"/></g></svg><h3>Diésel y acoples</h3><p>Cummins, Detroit, Caterpillar, Mack, Volvo, MTU y John Deere. Acoples Falk.</p><button class="btn outline sm" type="button" data-tab="tb-die">Ver más</button></div>
+      <div class="fitem rv" style="--d:240ms"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M6 18h36v8H6zM10 26v16M38 26v16M14 18l4-12h12l4 12"/></g></svg><h3>Suministros</h3><p>Seguridad industrial, herramientas, materiales eléctricos, repuestos y fabricación.</p><a class="btn outline sm" href="#suministros">Ver más</a></div>
+    </div>
+  </div>
+</section>
+
+
+<div class="ticker" aria-label="Disciplinas">
+  <div class="track">
+    <span>Obras eléctricas</span><span>Obras civiles</span><span>Asfaltado</span><span>Transporte</span><span>Servicios ambientales</span><span>Transformadores hasta 60 MVA</span><span>Mantenimiento diésel</span><span>Suministros industriales</span><span>Fabricación</span>
+    <span aria-hidden="true">Obras eléctricas</span><span aria-hidden="true">Obras civiles</span><span aria-hidden="true">Asfaltado</span><span aria-hidden="true">Transporte</span><span aria-hidden="true">Servicios ambientales</span><span aria-hidden="true">Transformadores hasta 60 MVA</span><span aria-hidden="true">Mantenimiento diésel</span><span aria-hidden="true">Suministros industriales</span><span aria-hidden="true">Fabricación</span>
+  </div>
+</div>
+
+<section class="band" aria-labelledby="t-cifras">
+  <div class="wrap">
+    <h2 id="t-cifras" class="rv" style="max-width:14ch">Trayectoria que se mide en campo</h2>
+    <div class="figs" style="margin-top:56px">
+      <div class="fig rv" style="--d:0ms"><b data-count="27">27</b><span>años en la industria de la construcción</span></div>
+      <div class="fig rv" style="--d:80ms"><b data-count="2006">2006</b><span>ingreso al programa EPS de PDVSA y sus filiales</span></div>
+      <div class="fig rv" style="--d:160ms"><b><span data-count="60">60</span> MVA</b><span>capacidad máxima en transformadores de potencia</span></div>
+      <div class="fig rv" style="--d:240ms"><b><span data-count="34.5" data-dec="1">34,5</span> kV</b><span>tensión de trabajo en líneas y equipos</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="capacidades" aria-labelledby="t-cap" style="padding-top:0">
+  <div class="wrap">
+    <div class="cap-head">
+      <h2 id="t-cap" class="rv">Capacidades de ejecución</h2>
+      <p class="lead rv" style="--d:80ms">Asumimos la responsabilidad total de proyectos de alta complejidad con equipos propios y profesionales en construcción civil, eléctrica, mecánica, instrumentación, automatización y procesos.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Líneas de servicio">
+      <button class="tab" role="tab" id="tb-ele" aria-controls="pn-ele" aria-selected="true">Obras eléctricas</button>
+      <button class="tab" role="tab" id="tb-civ" aria-controls="pn-civ" aria-selected="false" tabindex="-1">Obras civiles</button>
+      <button class="tab" role="tab" id="tb-tra" aria-controls="pn-tra" aria-selected="false" tabindex="-1">Transporte</button>
+      <button class="tab" role="tab" id="tb-amb" aria-controls="pn-amb" aria-selected="false" tabindex="-1">Ambiente</button>
+      <button class="tab" role="tab" id="tb-die" aria-controls="pn-die" aria-selected="false" tabindex="-1">Diésel y acoples</button>
+    </div>
+
+    <div class="panel in" role="tabpanel" id="pn-ele" aria-labelledby="tb-ele">
+      <div class="pv"><img src="img/planta.jpg" alt="Planta eléctrica industrial" loading="lazy"></div>
+      <ul class="svc">
+        <li><div><b>Plantas eléctricas</b><p>Remediación, mantenimiento y operación para mantenerlas disponibles y eficientes.</p></div></li>
+        <li><div><b>Líneas de alta tensión</b><p>Tendido e instalación de líneas con criterios estrictos de precisión y seguridad.</p></div></li>
+        <li><div><b>Aterramiento, pararrayos y protección catódica</b><p>Protección de activos e instalaciones contra descargas y corrosión.</p></div></li>
+        <li><div><b>Automatización de estaciones y PLC</b><p>Instalación, conexionado y programación de controladores para procesos más flexibles.</p></div></li>
+        <li><div><b>Generadores eléctricos</b><p>Instalación de equipos de generación de alto rendimiento.</p></div></li>
+        <li><div><b>Instrumentación</b><p>Calibración, instalación, conexión y mantenimiento de instrumentos de medición.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="pn-civ" aria-labelledby="tb-civ" hidden>
+      <div class="pv"><img src="img/asfalto.jpg" alt="Asfaltado de vía con maquinaria" loading="lazy"></div>
+      <ul class="svc">
+        <li class="thumbli"><img src="img/excavacion.jpg" alt="" loading="lazy"><div><b>Movimientos de tierra y excavaciones</b><p>Maquinaria y cuadrillas calificadas para preparación de terreno a cualquier escala.</p></div></li>
+        <li><div><b>Construcción civil en general</b><p>Rehabilitaciones e infraestructura vital: carreteras, autopistas y muelles.</p></div></li>
+        <li><div><b>Asfaltado</b><p>Pavimentación de vías, accesos y patios industriales.</p></div></li>
+        <li><div><b>Urbanismo y desarrollos</b><p>Proyectos integrales, incluida la construcción y mantenimiento de zanjas y canales.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="pn-tra" aria-labelledby="tb-tra" hidden>
+      <div class="pv"><img src="img/gandola.jpg" alt="Gandola de transporte pesado al atardecer" loading="lazy"></div>
+      <ul class="svc">
+        <li><div><b>Materiales para la construcción</b><p>Transporte y suministro de materiales de minería y extracción de suelos con entregas puntuales.</p></div></li>
+        <li><div><b>Personas, equipos y carga general</b><p>Movilización terrestre y aérea segura de personal, maquinaria y materiales.</p></div></li>
+        <li><div><b>Materiales inflamables</b><p>Transporte de sustancias inflamables con cumplimiento normativo en todo el trayecto.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="pn-amb" aria-labelledby="tb-amb" hidden>
+      <div class="pv"><img src="img/gabarra.jpg" alt="Gabarra de recolección en el lago" loading="lazy"></div>
+      <ul class="svc">
+        <li><div><b>Gabarras</b><p>Recolección, descarga y limpieza de gabarras para el mantenimiento de cuerpos de agua y riberas.</p></div></li>
+        <li><div><b>Desechos peligrosos</b><p>Disposición segura de sustancias, materiales y desechos peligrosos según la regulación ambiental.</p></div></li>
+        <li class="thumbli"><img src="img/orillas.jpg" alt="" loading="lazy"><div><b>Orillas del lago</b><p>Recolección y limpieza de desechos en las riberas del Lago de Maracaibo.</p></div></li>
+        <li><div><b>Fosas</b><p>Descarga y limpieza de fosas con criterios de higiene y seguridad.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="pn-die" aria-labelledby="tb-die" hidden>
+      <div class="pv"><img src="img/motor.jpg" alt="Motor diésel industrial MTU" loading="lazy"></div>
+      <ul class="svc">
+        <li><div><b>Motores diésel</b><p>Mantenimiento rutinario, preventivo y correctivo, y reparación de computadoras de motor.</p>
+          <div class="brands"><span>Cummins</span><span>Detroit Diesel serie 60</span><span>Caterpillar</span><span>Mack</span><span>Volvo</span><span>MTU</span><span>John Deere</span></div></div></li>
+        <li class="thumbli"><img src="img/acople-flex.jpg" alt="" loading="lazy"><div><b>Acoplamientos flexibles</b><p>Material no lubricado, alta amortiguación de vibraciones y tolerancia a la desalineación con menos paradas.</p></div></li>
+        <li class="thumbli"><img src="img/falk-lifelign.jpg" alt="" loading="lazy"><div><b>Falk Lifelign</b><p>Acoples de engranajes con dientes de corona triple que articulan libremente y reducen el desgaste.</p></div></li>
+        <li class="thumbli"><img src="img/falk-steelflex.jpg" alt="" loading="lazy"><div><b>Falk Steelflex</b><p>Acoples de rejilla de durabilidad probada para aplicaciones críticas.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="tx band" id="transformadores" aria-labelledby="t-tx">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="t-tx" class="rv">Transformadores de 15 kVA a 60 MVA</h2>
+      <p class="lead rv" style="--d:80ms">Monofásicos y trifásicos en aceite, secos, pedestal y sumergibles, con devanado de cobre o aluminio y tensiones de hasta 34,5 kV. Indique fases y potencia y vea los modelos que cubren su proyecto.</p>
+    </div>
+    <div class="tool">
+      <form class="ctrl" id="txf" aria-label="Filtro de transformadores" onsubmit="return false">
+        <fieldset>
+          <legend>Sistema</legend>
+          <div class="seg" id="seg"><span class="thumb" aria-hidden="true"></span>
+            <button type="button" data-f="all" aria-pressed="true">Todos</button>
+            <button type="button" data-f="1" aria-pressed="false">Monofásico</button>
+            <button type="button" data-f="3" aria-pressed="false">Trifásico</button>
+          </div>
+        </fieldset>
+        <div>
+          <label for="kva">Potencia requerida</label>
+          <div class="kva-out" aria-live="polite"><span id="kvaV">500</span><small id="kvaU">kVA</small></div>
+          <input type="range" id="kva" min="0" max="100" value="45" aria-describedby="kvaN">
+          <p class="note" id="kvaN">Escala de 15 kVA a 60 MVA.</p>
+        </div>
+        <p class="note"><b id="cnt" style="color:var(--on-navy)">0</b> modelos disponibles para esta potencia.</p>
+      </form>
+      <div class="results" id="res" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="t-prot">
+  <div class="wrap prot">
+    <div class="diag" id="diag">
+      <svg viewBox="0 0 400 400" role="img" aria-label="Diagrama de transformador en aceite con tanque de expansión, relé Buchholz y válvula de sobrepresión">
+        <rect x="90" y="170" width="190" height="170" rx="14" fill="#0A3667"/>
+        <g fill="#F6960E"><rect x="66" y="186" width="18" height="138" rx="4"/><rect x="286" y="186" width="18" height="138" rx="4"/><rect x="40" y="196" width="18" height="118" rx="4" opacity=".7"/><rect x="312" y="196" width="18" height="118" rx="4" opacity=".7"/></g>
+        <g fill="#F2F4F7"><rect x="122" y="140" width="16" height="32" rx="4"/><rect x="177" y="140" width="16" height="32" rx="4"/><rect x="232" y="140" width="16" height="32" rx="4"/></g>
+        <rect x="110" y="60" width="190" height="52" rx="26" fill="#12457F"/><rect x="118" y="80" width="174" height="24" rx="12" fill="#F6960E" opacity=".8" class="oil"/>
+        <path d="M250 112v28" stroke="#12457F" stroke-width="10"/><rect x="236" y="118" width="28" height="18" rx="4" fill="#F2F4F7"/>
+        <rect x="102" y="188" width="18" height="22" rx="4" fill="#F2F4F7"/>
+        <g stroke="#F6960E" stroke-width="3" fill="none" opacity=".5"><path class="flow" d="M150 320V200M185 320V200M220 320V200"/></g>
+        <style>.oil{animation:oil 5s ease-in-out infinite alternate;transform-origin:left}@keyframes oil{to{transform:scaleX(.7)}}</style>
+      </svg>
+      <button class="hot" style="left:72%;top:22%" data-p="0" aria-pressed="true" aria-label="Tanque de expansión">1</button>
+      <button class="hot" style="left:62.5%;top:31.5%" data-p="1" aria-pressed="false" aria-label="Relé de Buchholz">2</button>
+      <button class="hot" style="left:27.5%;top:49.5%" data-p="2" aria-pressed="false" aria-label="Válvula de sobrepresión">3</button>
+    </div>
+    <div>
+      <h2 id="t-prot" class="rv">Protecciones que alargan la vida del equipo</h2>
+      <div class="parts" style="margin-top:36px">
+        <button class="part" data-p="0" aria-pressed="true"><img class="pimg" src="img/tanque.jpg" alt="" loading="lazy"><h3>Tanque de expansión</h3><p>Absorbe la dilatación del aceite aislante por temperatura, mantiene la presión interna y evita la entrada de aire húmedo. Habitual en transformadores para el área petrolera.</p></button>
+        <button class="part" data-p="1" aria-pressed="false"><img class="pimg" src="img/buchholz.jpg" alt="" loading="lazy"><h3>Relé de Buchholz</h3><p>Detecta gases por cortocircuitos, descargas parciales o descomposición del aceite y activa la alarma o desconecta el equipo antes de un daño mayor.</p></button>
+        <button class="part" data-p="2" aria-pressed="false"><img class="pimg" src="img/valvula.jpg" alt="" loading="lazy"><h3>Válvula de sobrepresión</h3><p>Libera el exceso de aceite cuando la presión interna llega a un nivel peligroso por fallas, cortocircuito o sobrecalentamiento.</p></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="eq band" aria-labelledby="t-eq">
+  <div class="wrap">
+    <h2 id="t-eq" class="rv" style="max-width:16ch">Equipos para la industria petrolera</h2>
+    <p class="lead rv" style="--d:80ms;margin-top:24px;color:var(--on-orange)">Automatización, química de producción y sellado de marcas reconocidas, con asesoría técnica, instalación y puesta en marcha.</p>
+    <div class="eq-grid">
+      <article class="eq-item rv">
+        <div class="art"><img src="img/variador.jpg" alt="Variadores de frecuencia Siemens SINAMICS" loading="lazy"></div>
+        <h3>Variadores Siemens SINAMICS</h3>
+        <p>Controlan velocidad y par de motores AC ajustando frecuencia y tensión a la demanda real: ahorro de energía, arranques suaves y menos desgaste mecánico.</p>
+        <dl><div><dt>Gamas</dt><dd>V20, G120C, G120 y S120 en baja tensión</dd></div><div><dt>Aplicaciones</dt><dd>Bombas, ventiladores, compresores, cintas, mezcladores, bombeo de crudo y agua</dd></div><div><dt>Funciones</dt><dd>Control vectorial, protección del motor, PROFINET / PROFIBUS / Modbus, integración con PLC</dd></div><div><dt>Servicio</dt><dd>Suministro, instalación, parametrización, puesta en marcha y mantenimiento</dd></div></dl>
+      </article>
+      <article class="eq-item rv" style="--d:80ms">
+        <div class="art"><img src="img/quimico.jpg" alt="Tambores y contenedores IBC de químico desemulsificante" loading="lazy"></div><h3>Desemulsificante para crudo</h3>
+        <p>Rompe las emulsiones agua-petróleo para alcanzar la especificación de BS&amp;W con menos calentamiento.</p>
+        <dl><div><dt>Aplicación</dt><dd>Cabezal de pozo, líneas de flujo, múltiples, estaciones, plantas deshidratadoras y patios de tanques</dd></div><div><dt>Selección</dt><dd>Formulación y dosis por tipo de crudo mediante bottle test</dd></div><div><dt>Presentación</dt><dd>Tambores de 55 gal e IBC de 1.000 L</dd></div></dl>
+      </article>
+      <article class="eq-item rv" style="--d:160ms">
+        <div class="art"><img src="img/sello.jpg" alt="Sello mecánico de cartucho" loading="lazy"></div><h3>Sellos mecánicos John Crane</h3>
+        <p>Cierre hermético entre eje y carcasa que reduce paradas no programadas en bombas y equipos rotativos.</p>
+        <dl><div><dt>Tipos</dt><dd>Elastómero (Tipo 1, 2 y 21), fuelle metálico, cartucho y API 682</dd></div><div><dt>Materiales</dt><dd>Carburo de silicio y de tungsteno, carbón grafito, Viton®, EPDM</dd></div></dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="suministros" aria-labelledby="t-sup">
+  <div class="wrap sup">
+    <div>
+      <h2 id="t-sup" class="rv">Suministros y fabricación</h2>
+      <p class="lead rv" style="--d:80ms;margin-top:24px">Lo que su obra y su flota necesitan, desde el calzado de la cuadrilla hasta el herraje de la línea.</p>
+      <div class="sup-list">
+        <div class="sup-row rv"><img src="img/seguridad.jpg" alt="" loading="lazy"><b>Implementos de seguridad</b><span>Protección personal certificada</span></div>
+        <div class="sup-row rv"><img src="img/botas.jpg" alt="" loading="lazy"><b>Calzado de seguridad</b><span>Botas industriales y deportivo, todas las tallas</span></div>
+        <div class="sup-row rv"><img src="img/herramientas.jpg" alt="" loading="lazy"><b>Herramientas</b><span>Construcción y mantenimiento</span></div>
+        <div class="sup-row rv"><img src="img/materiales.jpg" alt="" loading="lazy"><b>Materiales de construcción</b><span>Ferretería y carpintería, madera trabajada y sin procesar</span></div>
+        <div class="sup-row rv"><img src="img/flota.jpg" alt="" loading="lazy"><b>Repuestos de flota</b><span>Motor, ópticas y faros, accesorios de cabina</span></div>
+      </div>
+    </div>
+    <div class="mat rv" style="--d:120ms">
+      <div class="hw" aria-hidden="true"><div class="hwt"><img src="img/h40.jpg" alt="" loading="lazy"><img src="img/h43.jpg" alt="" loading="lazy"><img src="img/h45.jpg" alt="" loading="lazy"><img src="img/h46.jpg" alt="" loading="lazy"><img src="img/h47.jpg" alt="" loading="lazy"><img src="img/h48.jpg" alt="" loading="lazy"><img src="img/h49.jpg" alt="" loading="lazy"><img src="img/h50.jpg" alt="" loading="lazy"><img src="img/h51.jpg" alt="" loading="lazy"><img src="img/h52.jpg" alt="" loading="lazy"><img src="img/h56.jpg" alt="" loading="lazy"><img src="img/h57.jpg" alt="" loading="lazy"><img src="img/h58.jpg" alt="" loading="lazy"><img src="img/h59.jpg" alt="" loading="lazy"><img src="img/h40.jpg" alt="" loading="lazy"><img src="img/h43.jpg" alt="" loading="lazy"><img src="img/h45.jpg" alt="" loading="lazy"><img src="img/h46.jpg" alt="" loading="lazy"><img src="img/h47.jpg" alt="" loading="lazy"><img src="img/h48.jpg" alt="" loading="lazy"><img src="img/h49.jpg" alt="" loading="lazy"><img src="img/h50.jpg" alt="" loading="lazy"><img src="img/h51.jpg" alt="" loading="lazy"><img src="img/h52.jpg" alt="" loading="lazy"><img src="img/h56.jpg" alt="" loading="lazy"><img src="img/h57.jpg" alt="" loading="lazy"><img src="img/h58.jpg" alt="" loading="lazy"><img src="img/h59.jpg" alt="" loading="lazy"></div></div>
+      <h3>Materiales eléctricos para líneas</h3>
+      <ul>
+        <li>Cruceta galvanizada 2,40 m y 1,80 m</li><li>Asiento adaptador galvanizado para crucetas</li><li>Aislador de suspensión socate y bola 23.9</li><li>Palillo aislador espiga</li><li>Aislador tipo carrete de cerámica para percha</li><li>Aislador espiga de porcelana 13,5 kV</li><li>Percha eléctrica de 1 a 5 hilos</li><li>Abrazadera para 1 y 3 transformadores</li><li>Pararrayos polimérico 12/15/18/21 kV</li><li>Cortacorriente de línea</li><li>Tuerca de ojo galvanizada 5/8"</li><li>Perno roscado galvanizado 12" con tuercas</li><li>Pletinas galvanizadas contra cruceta</li><li>Tornillo máquina 3/8" para pletina</li><li>Abrazadera universal 3½" a 12½"</li><li>Cable Arvidal (guaya de extensión)</li><li>Conductor de alambre sólido de cobre</li><li>Conector Permagrip para alta tensión</li>
+      </ul>
+      <h3 style="margin-top:36px">Fabricación propia</h3>
+      <div class="fab">
+        <div><img src="img/pupitre.jpg" alt="" loading="lazy"><b>Pupitre A</b><span>Preescolar · 40×60×52 cm</span></div>
+        <div><img src="img/pupitre.jpg" alt="" loading="lazy"><b>Pupitre B</b><span>Básica · 40×60×62 cm</span></div>
+        <div><img src="img/pupitre.jpg" alt="" loading="lazy"><b>Pupitre C</b><span>Bachillerato · 45×70×75 cm</span></div>
+        <div><img src="img/pizarra.jpg" alt="" loading="lazy"><b>Pizarra</b><span>Acrílica · 2 × 1 m</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hist band" id="historia" aria-labelledby="t-hist">
+  <div class="wrap hist-grid">
+    <div>
+      <h2 id="t-hist" class="rv">Hechos en el Zulia</h2>
+      <p class="lead rv" style="--d:80ms">Desde Maracaibo hemos crecido de la construcción a un contratista multidisciplinario: civil, eléctrica, mecánica, electrónica, petrolera, instrumentación, telecomunicaciones, automatización y procesos.</p>
+      <div class="ctas rv" style="--d:160ms;margin-top:36px"><a class="btn" href="https://wa.me/584221801786" target="_blank" rel="noopener">Hablemos por WhatsApp <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+    <ol class="tl">
+      <li class="rv"><b>27</b><p>Años de trayectoria en la industria de la construcción.</p></li>
+      <li class="rv" style="--d:80ms"><b>2006</b><p>Ingreso al Programa de Empresas de Producción Social (EPS) de Petróleos de Venezuela y sus filiales.</p></li>
+      <li class="rv" style="--d:160ms"><b>2008</b><p>Diversificación hacia proyectos eléctricos, petroleros, transporte, ambiente y suministros.</p></li>
+      <li class="rv" style="--d:240ms"><b>2009</b><p>Asociación estratégica con una entidad pública para proyectos sociales urbanos.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="contacto" aria-labelledby="t-con">
+  <div class="wrap contact">
+    <div>
+      <h2 id="t-con" class="rv">Pida su cotización</h2>
+      <p class="lead rv" style="--d:80ms;margin-top:24px">Cuéntenos qué necesita y su solicitud sale directo a nuestro WhatsApp. Respondemos con alcance, plazos y precio.</p>
+      <div class="addr rv" style="--d:160ms">
+        <div><b>Dirección</b><span>Av. 17 entre calles 103 y 104, Local 103-20, Barrio El Poniente, Maracaibo, Zulia</span></div>
+        <div><b>WhatsApp</b><span><a href="https://wa.me/584221801786" target="_blank" rel="noopener">+58 422 180 1786</a></span></div>
+        <div><b>RIF</b><span>J-30607857-6</span></div>
+      </div>
+    </div>
+    <form class="form rv" id="qf" style="--d:120ms" novalidate>
+      <div class="two">
+        <label for="q-n">Nombre y empresa<input id="q-n" required autocomplete="organization" placeholder="Ej.: Ing. Pérez, Operadora del Lago"></label>
+        <label for="q-t">Teléfono o correo<input id="q-t" required placeholder="Ej.: 0414 000 0000"></label>
+      </div>
+      <label for="q-s">Servicio<select id="q-s">
+        <option>Obras eléctricas</option><option>Obras civiles y asfaltado</option><option>Transporte</option><option>Servicios ambientales</option><option>Transformadores</option><option>Mantenimiento diésel y acoples</option><option>Variadores, químicos o sellos</option><option>Suministros y fabricación</option>
+      </select></label>
+      <label for="q-d">Detalle del requerimiento<textarea id="q-d" rows="4" placeholder="Ej.: 3 transformadores pedestal de 500 kVA, 13,8 kV, entrega en Lagunillas"></textarea></label>
+      <p id="q-err" role="alert" style="color:var(--orange);font-weight:600" hidden>Escriba su nombre y un teléfono o correo para poder responderle.</p>
+      <button class="btn live" type="submit">Preparar mensaje <span class="arr" aria-hidden="true">→</span></button>
+      <div class="out" id="q-out" hidden>
+        <pre id="q-txt"></pre>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" id="q-wa" href="https://wa.me/584221801786" target="_blank" rel="noopener" style="background:#25D366;color:#0A3667">Enviar por WhatsApp <span class="arr" aria-hidden="true">→</span></a><button class="btn ghost" type="button" id="q-copy">Copiar texto</button></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#inicio" style="display:inline-flex;margin-bottom:40px"><img src="img/logo-h.png" alt="Morochas Energy Group, C.A." style="height:64px"></a>
+    <div class="big" aria-hidden="true">Morochas<br><span>Energy Group</span></div>
+    <div class="foot"><span>MOROCHAS ENERGY GROUP, C.A. · RIF J-30607857-6</span><span>WhatsApp +58 422 180 1786</span><span>Maracaibo, Zulia, Venezuela</span></div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Reveal: only elements below the first screen start hidden */
+(()=>{
+  const els=[...document.querySelectorAll('.rv')];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(el=>{ if(el.getBoundingClientRect().top < innerHeight) el.classList.add('on'); else io.observe(el); });
+  setTimeout(()=>els.forEach(el=>el.classList.add('on')),4000); // safety net
+})();
+
+/* Counters */
+(()=>{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return; io.unobserve(e.target);
+    const el=e.target, end=parseFloat(el.dataset.count), dec=+el.dataset.dec||0, start=end>1000?end-30:0;
+    if(RM) return; const t0=performance.now(), d=1400;
+    const step=t=>{const p=Math.min(1,(t-t0)/d), v=start+(end-start)*(1-Math.pow(1-p,4));
+      el.textContent=v.toFixed(dec).replace('.',','); if(p<1) requestAnimationFrame(step)};
+    requestAnimationFrame(step);
+  }),{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
+})();
+
+/* 3D buttons */
+document.querySelectorAll('.btn').forEach(b=>{
+  if(!b.querySelector('.shine')){b.insertAdjacentHTML('afterbegin','<span class="shine" aria-hidden="true"></span><span class="glare" aria-hidden="true"></span>')}
+  if(RM||!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+    b.style.setProperty('--ry',((px-.5)*18).toFixed(1)+'deg');b.style.setProperty('--rx',((.5-py)*22).toFixed(1)+'deg');
+    b.style.setProperty('--gx',(px*100).toFixed(0)+'%');b.style.setProperty('--gy',(py*100).toFixed(0)+'%')});
+  b.addEventListener('pointerleave',()=>{b.style.setProperty('--rx','0deg');b.style.setProperty('--ry','0deg')});
+});
+
+/* 3D tilt on cards */
+if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.pcard,.eq-item').forEach(c=>{
+    c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(900px) rotateX(${(-py*7).toFixed(2)}deg) rotateY(${(px*9).toFixed(2)}deg) translateY(-6px)`});
+    c.addEventListener('pointerleave',()=>{c.style.transform=''});
+  });
+}
+
+/* Hero: particle network + cursor parallax */
+(()=>{
+  const hero=document.querySelector('.hero'), c=hero.querySelector('.hero-net'); if(!c||!c.getContext) return;
+  const ctx=c.getContext('2d'), dpr=Math.min(devicePixelRatio||1,2); let W=0,H=0,pts=[],raf=0,vis=true; const m={x:-999,y:-999,tx:-999,ty:-999};
+  const size=()=>{const r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n=Math.max(30,Math.min(110,Math.round(W*H/13000)));pts=[];for(let i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+.8,o:Math.random()<.18})};
+  const draw=()=>{ctx.clearRect(0,0,W,H); m.x+=(m.tx-m.x)*.15; m.y+=(m.ty-m.y)*.15;
+    for(let i=0;i<pts.length;i++){const p=pts[i];
+      if(!RM){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;}
+      const dx=p.x-m.x,dy=p.y-m.y,d=Math.hypot(dx,dy);
+      if(d<140&&!RM){p.x+=dx/d*1.4;p.y+=dy/d*1.4}
+      if(d<180){ctx.strokeStyle=`rgba(246,150,14,${(0.55*(1-d/180)).toFixed(3)})`;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(m.x,m.y);ctx.stroke()}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle=p.o?'rgba(255,176,74,.9)':'rgba(190,205,226,.6)';ctx.fill();
+      for(let j=i+1;j<pts.length;j++){const q=pts[j],ex=p.x-q.x,ey=p.y-q.y,e=ex*ex+ey*ey;
+        if(e<17000){ctx.strokeStyle=`rgba(190,205,226,${(0.2*(1-e/17000)).toFixed(3)})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}}
+    if(!RM&&vis) raf=requestAnimationFrame(draw)};
+  size(); draw();
+  try{new ResizeObserver(()=>{size();if(RM)draw()}).observe(c)}catch(e){}
+  try{new IntersectionObserver(es=>{vis=es[0].isIntersecting;cancelAnimationFrame(raf);if(vis&&!RM)raf=requestAnimationFrame(draw)}).observe(hero)}catch(e){}
+  if(RM) return;
+  const ph=hero.querySelector('.hero-ph .tilt'), bg=hero.querySelector('.bgph'), ln=hero.querySelector('.hero-lines');
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,nx=x/r.width-.5,ny=y/r.height-.5;
+    m.tx=x;m.ty=y; if(m.x<-900){m.x=x;m.y=y}
+    hero.style.setProperty('--mx',x+'px');hero.style.setProperty('--my',y+'px');
+    if(ph){ph.style.setProperty('--try',(nx*14).toFixed(2)+'deg');ph.style.setProperty('--trx',(-ny*10).toFixed(2)+'deg')}
+    if(bg) bg.style.translate=`${(-nx*30).toFixed(1)}px ${(-ny*20).toFixed(1)}px`;
+    if(ln) ln.style.transform=`translate(${(nx*18).toFixed(1)}px,${(ny*12).toFixed(1)}px)`;
+  });
+  hero.addEventListener('pointerleave',()=>{m.tx=m.ty=-999;m.x=m.y=-999;if(ph){ph.style.setProperty('--try','0deg');ph.style.setProperty('--trx','0deg')}if(bg)bg.style.translate='';if(ln)ln.style.transform=''});
+})();
+
+(()=>{const nav=document.querySelector('.nav');const on=()=>nav.classList.toggle('solid',scrollY>40);on();addEventListener('scroll',on,{passive:true});})();
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById(b.dataset.tab);t.click();document.getElementById('capacidades').scrollIntoView({behavior:RM?'auto':'smooth'});setTimeout(()=>t.focus({preventScroll:true}),600)}));
+
+/* Tabs */
+(()=>{
+  const tabs=[...document.querySelectorAll('.tab')];
+  const sel=t=>{tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;const p=document.getElementById(x.getAttribute('aria-controls'));p.hidden=!on;p.classList.remove('in');if(on){void p.offsetWidth;p.classList.add('in');p.querySelectorAll('li').forEach((li,i)=>li.style.animationDelay=(80+i*60)+'ms')}})};
+  tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{let n=null;if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];if(n){n.focus();sel(n)}})});
+  document.querySelectorAll('.panel.in li').forEach((li,i)=>li.style.animationDelay=(80+i*60)+'ms');
+})();
+
+/* Transformer finder */
+(()=>{
+  const IMG=['tx20','tx21','tx22','tx23','tx24','tx25','tx26','tx27','tx28','tx29','tx30'];
+  const TX=[
+    {n:'Poste intemperie en aceite',f:1,min:15,max:333,v:'Hasta 34,5 kV',d:'Redes aéreas residenciales, comerciales e industriales; individual o en banco.',x:'Tipo unicornio, radiadores o doble conmutador'},
+    {n:'Sumergible (Subway)',f:1,min:15,max:333,v:'Hasta 34,5 kV',d:'Para sótanos o casillas según normas ANSI, enfriamiento natural en aceite mineral.',x:'Conexión radial o anillo'},
+    {n:'Seco monofásico',f:1,min:15,max:150,v:'Hasta 34,5 kV',d:'Para interiores: no inflamable, bajo ruido y sin purgas.',x:'Instalación cercana a la carga'},
+    {n:'Pedestal (Pad-Mounted)',f:1,min:15,max:150,v:'Hasta 34,5 kV',d:'Redes subterráneas urbanas y comerciales, compacto y autoprotegido.',x:'Fusibles limitadores, switches, válvulas de alivio'},
+    {n:'Seco trifásico',f:3,min:15,max:3125,v:'Hasta 34,5 kV',d:'Para interiores: no inflamable, ecológico y de alta eficiencia.',x:'Sin líquidos ni purgas'},
+    {n:'Pedestal (Pad-Mounted)',f:3,min:100,max:2500,v:'4,8/7,2 kV (EDC) a 34,5 kV',d:'Redes subterráneas en entornos urbanos y comerciales.',x:'Radial o anillo según cliente'},
+    {n:'Pedestal desfasador',f:3,min:100,max:750,v:'4,8/7,2 kV a 13,8 kV',d:'Modifica el ángulo de fase para controlar el flujo de potencia y estabilizar la red.',x:'Transmisión y distribución'},
+    {n:'Pedestal multivoltaje / hexafásico',f:3,min:100,max:750,v:'4,8/7,2 kV a 34,5 kV',d:'Alimenta cargas que requieren distintos niveles de tensión.',x:'Radial o anillo'},
+    {n:'Sumergible (Subway)',f:3,min:100,max:5000,v:'Hasta 34,5 kV',d:'Instalación en sótanos o casillas según ANSI, enfriamiento natural.',x:'Radial o anillo'},
+    {n:'Subestación de distribución',f:3,min:300,max:5000,v:'Hasta 34,5 kV',d:'Reduce alta tensión a niveles de distribución para áreas residenciales, comerciales o industriales.',x:'Buchholz o Jansen, válvula de presión súbita, tablero de datos'},
+    {n:'Subestación de potencia',f:3,min:5000,max:60000,v:'Hasta 34,5 kV',d:'Grandes capacidades para estaciones eléctricas, plantas generadoras y pozos petroleros.',x:'Transmisión de grandes volúmenes de energía'}
+  ];
+  const fmt=k=>k>=1000?{v:(k/1000).toLocaleString('es-VE',{maximumFractionDigits:k%1000?2:0}),u:'MVA'}:{v:Math.round(k).toString(),u:'kVA'};
+  const res=document.getElementById('res'), r=document.getElementById('kva');
+  res.innerHTML=TX.map((t,i)=>{const a=fmt(t.min),b=fmt(t.max);return `<article class="card" data-i="${i}"><div class="cimg"><img src="img/${IMG[i]}.jpg" alt="Transformador ${t.n}" loading="lazy"></div><div class="ph"><h3>${t.n}</h3><span class="chip">${t.f===1?'Monofásico':'Trifásico'}</span></div><p>${t.d}</p><dl><dt>Potencia</dt><dd>${a.v} ${a.u} – ${b.v} ${b.u}</dd><dt>Tensión</dt><dd>${t.v}</dd><dt>Opciones</dt><dd>${t.x}</dd></dl><a class="btn dark q" href="#contacto" data-n="${t.n} ${t.f===1?'monofásico':'trifásico'}">Cotizar este modelo <span class="arr" aria-hidden="true">→</span></a></article>`}).join('')+`<div class="empty" id="none" hidden><h3>Sin modelo estándar para este valor</h3><p style="margin-top:10px;color:#C9D4E5">Escríbanos y lo resolvemos con una configuración a medida.</p></div>`;
+  const cards=[...res.querySelectorAll('.card')];
+  let f='all';
+  const toK=p=>Math.round(Math.exp(Math.log(15)+(Math.log(60000)-Math.log(15))*p/100)/5)*5||15;
+  const upd=(anim)=>{
+    const k=toK(+r.value), o=fmt(k);
+    document.getElementById('kvaV').textContent=o.v; document.getElementById('kvaU').textContent=o.u;
+    let n=0;
+    cards.forEach(c=>{const t=TX[c.dataset.i];const ok=(f==='all'||+f===t.f)&&k>=t.min&&k<=t.max;const was=!c.classList.contains('out');c.classList.toggle('out',!ok);if(ok){n++;if(anim&&!was){c.classList.remove('enter');void c.offsetWidth;c.classList.add('enter')}}});
+    document.getElementById('cnt').textContent=n; document.getElementById('none').hidden=n>0;
+  };
+  r.addEventListener('input',()=>upd(true));
+  const seg=document.getElementById('seg'), th=seg.querySelector('.thumb'), bs=[...seg.querySelectorAll('button')];
+  const place=b=>{th.style.width=b.offsetWidth+'px';th.style.transform=`translateX(${b.offsetLeft-4}px)`};
+  bs.forEach(b=>b.addEventListener('click',()=>{f=b.dataset.f;bs.forEach(x=>x.setAttribute('aria-pressed',x===b));place(b);upd(true)}));
+  addEventListener('resize',()=>place(seg.querySelector('[aria-pressed="true"]')));
+  requestAnimationFrame(()=>place(bs[0]));
+  upd(false);
+  res.addEventListener('click',e=>{const a=e.target.closest('.q');if(!a)return;document.getElementById('q-s').value='Transformadores';const d=document.getElementById('q-d');d.value=`Transformador ${a.dataset.n}, ${document.getElementById('kvaV').textContent} ${document.getElementById('kvaU').textContent}. Tensión: `;setTimeout(()=>d.focus({preventScroll:true}),700)});
+})();
+
+/* Protection hotspots */
+(()=>{
+  const all=[...document.querySelectorAll('.hot,.part')];
+  all.forEach(b=>b.addEventListener('click',()=>{const p=b.dataset.p;all.forEach(x=>x.setAttribute('aria-pressed',x.dataset.p===p))}));
+})();
+
+/* VFD readout */
+if(!RM&&document.getElementById('hz')){const hz=document.getElementById('hz');let t=0;setInterval(()=>{t+=.15;hz.textContent=(42+8*Math.sin(t)).toFixed(1)},120)}
+
+/* Quote form */
+(()=>{
+  const f=document.getElementById('qf'), out=document.getElementById('q-out'), txt=document.getElementById('q-txt'), err=document.getElementById('q-err');
+  f.addEventListener('submit',e=>{e.preventDefault();
+    const n=f.querySelector('#q-n').value.trim(), t=f.querySelector('#q-t').value.trim();
+    if(!n||!t){err.hidden=false;return} err.hidden=true;
+    txt.textContent=`Solicitud de cotización · Morochas Energy Group\n\nCliente: ${n}\nContacto: ${t}\nServicio: ${f.querySelector('#q-s').value}\nDetalle: ${f.querySelector('#q-d').value.trim()||'Por definir'}`;
+    document.getElementById('q-wa').href='https://wa.me/584221801786?text='+encodeURIComponent(txt.textContent); out.hidden=false; out.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:400,easing:'cubic-bezier(.23,1,.32,1)'});
+  });
+  document.getElementById('q-copy').addEventListener('click',async e=>{const b=e.currentTarget;
+    try{await navigator.clipboard.writeText(txt.textContent);b.textContent='Copiada'}catch{const s=getSelection(),rg=document.createRange();rg.selectNodeContents(txt);s.removeAllRanges();s.addRange(rg);b.textContent='Texto seleccionado'}
+    setTimeout(()=>b.textContent='Copiar texto',2000)});
+})();
+</script>
+
+</body>
+</html>
